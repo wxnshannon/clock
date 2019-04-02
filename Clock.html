@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<head>
+<script language="javascript">
+  var timeID;
+  var Running=false;
+  function StartTime()
+  {
+    running=true;
+    ChangeTime();
+  }
+  function ChangeTime()
+  {
+    var currentTime=new Date();
+    document.myClock.show.value=currentTime.toLocaleString();
+    //递归调用
+    timeID=setTimeout("ChangeTime()",1000);
+   }
+  function StopTime()
+  {
+     if (Running)
+        clearTimeout(timeID);
+     Running=false;
+  }
+</script>
+</head>
+<body onLoad="StartTime()" onUnload="StopTime()">
+<form name="myClock">
+   <input type="text" name="show" value=" " size=20>
+</form>
+</body>
+</html> 
